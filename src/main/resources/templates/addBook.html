@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="http://localhost:35729/livereload.js"></script>
+    <style>
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h3.button{
+            background-color: #448468;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            font-family: monospace;
+        }
+        div.panel{
+
+            border: none ;
+            border-style: hidden;
+            border-radius: 150px 150px 150px 150px;
+            border-width: 500px;
+            text-align: center;
+
+
+            -webkit-box-shadow: 8px 20px 43px 1px rgba(66, 68, 90, 1);
+            -moz-box-shadow: 8px 20px 43px 1px rgba(66, 68, 90, 1);
+            box-shadow: 8px 20px 43px 1px rgba(66, 68, 90, 1);
+        }
+
+        test.TablePanel{
+            width: 100%;
+            font-size: large;
+            color: #000000;
+            border-style: hidden;
+            margin-left: auto;
+            margin-right: auto;
+
+            text-align: center;
+
+            opacity: 0.95;
+        }
+        table {
+            width: 75%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width:400px;
+            box-shadow 0 0 20px rgba(0,0,0,0.15);
+
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+<!--        tr {-->
+<!--            background-color:#009879;-->
+<!--            color: #000000;-->
+<!--            text-align: left;-->
+<!--            border-bottom 1px solid #dddddd;-->
+<!--        }-->
+
+<!--        .TablePanel tr{-->
+<!--             background-color: #009879;-->
+<!--             color: #ffffff;-->
+<!--             text-align: left;-->
+<!--        }-->
+
+<!--        .TablePanel tbody tr{-->
+<!--            border-bottom: 1px solid #dddddd;-->
+<!--            color: #000000;-->
+<!--        }-->
+
+<!--        .TablePanel tbody tr:nth-of-type(even){-->
+<!--            background-color: #f3f3f3;-->
+<!--            color: #000000;-->
+
+<!--        }-->
+
+<!--        .TablePanel tbody tr:last-of-type {-->
+<!--            border-bottom: 2px solid #009879;-->
+<!--        }-->
+
+<!--        .TablePanel tbody tr.active-row{-->
+<!--            font-weight: bold;-->
+<!--            color: #009879;-->
+
+<!--        }-->
+
+
+<!--        tr:hover {background-color: #d7d792;-->
+<!--        }-->
+
+        h1.button {
+            border: none;
+            border-style: wave;
+            border-radius: 150px 150px 150px 150px;
+        }
+
+        a.button{
+            background-color: #0972ff;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        a.pdfGenerate {
+            background-size: cover;
+
+        }
+
+        a {
+            color: black;
+        }
+
+        form.add {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        d.button {
+            background-color: #0972ff;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 12px;
+            font-family: monospace;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+    <style>
+    body{
+    background: #3399ff;
+    }
+
+
+    .circle{
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: ripple 15s infinite;
+    box-shadow: 0px 0px 1px 0px #508fb9;
+    }
+
+    .small{
+    width: 200px;
+    height: 200px;
+    left: -100px;
+    bottom: -100px;
+    }
+
+    .medium{
+    width: 400px;
+    height: 400px;
+    left: -200px;
+    bottom: -200px;
+    }
+
+    .large{
+    width: 600px;
+    height: 600px;
+    left: -300px;
+    bottom: -300px;
+    }
+
+    .xlarge{
+    width: 800px;
+    height: 800px;
+    left: -400px;
+    bottom: -400px;
+    }
+
+    .xxlarge{
+    width: 1000px;
+    height: 1000px;
+    left: -500px;
+    bottom: -500px;
+    }
+
+    .shade1{
+    opacity: 0.2;
+    }
+    .shade2{
+    opacity: 0.5;
+    }
+
+    .shade3{
+    opacity: 0.7;
+    }
+
+    .shade4{
+    opacity: 0.8;
+    }
+
+    .shade5{
+    opacity: 0.9;
+    }
+
+    @keyframes ripple{
+    0%{
+    transform: scale(0.8);
+    }
+
+    50%{
+    transform: scale(1.2);
+    }
+
+    100%{
+    transform: scale(0.8);
+    }
+    }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="color: white;">
+    <a class="navbar-brand" href="#">PABLibrary</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="bookDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Książki
+                </a>
+                <div class="dropdown-menu" aria-labelledby="bookDropdown">
+                    <a class="dropdown-item" th:href="@{/books}">Lista książek</a>
+                    <a class="dropdown-item" th:href="@{/books/add}">Dodaj książkę</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="authorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Autorzy
+                </a>
+                <div class="dropdown-menu" aria-labelledby="authorDropdown">
+                    <a class="dropdown-item" th:href="@{/authors}">Lista autorów</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="publisherDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Wydawnictwa
+                </a>
+                <div class="dropdown-menu" aria-labelledby="publisherDropdown">
+                    <a class="dropdown-item" th:href="@{/publishers}">Lista wydawnictw</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Użytkownicy
+                </a>
+                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" th:href="@{/users}">Lista użytkowników</a>
+                </div>
+            </li>
+        </ul>
+        <a class="text-light" th:ref="@{/logout}">Wyloguj się</a>
+    </div>
+</nav>
+
+<div class="ripple-background"></div>
+<div class="circle xxlarge shade1"></div>
+<div class="circle xlarge shade2"></div>
+<div class="circle large shade3"></div>
+<div class="circle mediun shade4"></div>
+<div class="circle small shade5"></div>
+
+<div class="content">
+    <form th:action="@{/books/save}"
+          th:object="${book}" method="POST">
+        <div>
+            <table class="table table-hover table-light" border="0">
+                <tbody>
+                <tr th:unless="${add}">
+                    <td>ID</td>
+                    <td>:</td>
+                    <td><input readonly type="text" th:field="*{id}"></td>
+                </tr>
+                <tr>
+                    <td>Tytul</td>
+                    <td>:</td>
+                    <td><input type="text" th:field="*{title}"/></td>
+                </tr>
+                <tr>
+                    <select type="text" th:field="*{category}">
+                        <option th:each="c: ${categories}" th:value="${c}" th:text="${c}"/>
+                    </select>
+                </tr>
+
+                <tr>
+                    <select type="text" th:field="*{authorId}">
+                        <option th:each="a: ${authors}" th:value="${a.id}" th:text="|${a.name} ${a.surname}|"/>
+                    </select>
+                </tr>
+                <tr>
+                    <select type="text" th:field="*{publisherId}">
+                        <option th:each="p: ${publishers}" th:value="${p.id}" th:text="${p.name}"/>
+                    </select>
+                </tr>
+                <tr>
+                    <td>Rok wydania</td>
+                    <td>:</td>
+                    <td><input type="text" th:field="*{releaseDate}"/></td>
+                </tr>
+                <tr>
+                    <td>Ilosc</td>
+                    <td>:</td>
+                    <td><input type="text" th:field="*{quantity}"/></td>
+                </tr>
+                </tbody>
+            </table>
+            <input type="submit" th:value="${add} ? 'Create' : 'Update'"/>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
